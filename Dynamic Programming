@@ -1,0 +1,17 @@
+ https://practice.geeksforgeeks.org/problems/cutted-segments1642/1?page=1&status[]=solved&category[]=Dynamic%20Programming&sortBy=submissions
+ //Function to find the maximum number of cuts.
+    int dp[10005];
+    int fun(int n,int x,int y,int z)
+    {
+        if(n<0) return -100000;
+        if(dp[n]!=-1) return dp[n];
+        if(n==0) return 0;
+        return dp[n]=1+max(fun(n-x,x,y,z),max(fun(n-y,x,y,z),fun(n-z,x,y,z)));
+    }
+    int maximizeTheCuts(int n, int x, int y, int z)
+    {
+        memset(dp,-1,sizeof(dp));
+        int t=fun(n,x,y,z);
+        if(t<0) return 0; 
+         return t;
+    }
